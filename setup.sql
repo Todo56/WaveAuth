@@ -1,0 +1,3 @@
+/* Execute this code before doing anything, preferably in a database called wave */
+CREATE TABLE accounts (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(100) UNIQUE, password VARCHAR(200), max_sessions INT DEFAULT 1, enabled SMALLINT DEFAULT 1, permission INT DEFAULT 0, created_at VARCHAR(50));
+CREATE TABLE sessions (session_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, token VARCHAR(100) UNIQUE, created_at VARCHAR(50), valid_until VARCHAR(50), device_id VARCHAR(100), device_name VARCHAR(50), enabled SMALLINT DEFAULT 1);

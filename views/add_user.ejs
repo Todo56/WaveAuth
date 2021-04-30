@@ -1,0 +1,149 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Wave Client - Admin Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>  <!-- Page plugins -->
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
+</head>
+
+<body>
+<!-- Sidenav -->
+<%- include("../public/partials/sidebar.ejs") %>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <%- include("../public/partials/navbar.ejs") %>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Home</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="<%- url %>"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="<%- url %>/users">Users</a>
+                                <li class="breadcrumb-item"><a href="<%- url %>/users/add">Add</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Card stats -->
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <form>
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Username</label>
+                                <input class="form-control" name="username" type="text" id="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-search-input" class="form-control-label">Password</label>
+                                <input class="form-control" type="text" name="password" id="example-password-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-number-input" class="form-control-label">Max Sessions</label>
+                                <input class="form-control" type="number" value="1" id="example-number-input" required>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1" >Enabled</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Developer</label>
+                            </div>
+                            <br>
+                            <button type="button" onclick="sendData()" class="btn btn-primary">Add Beta Member</button><br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Footer -->
+        <%- include("../public/partials/footer.ejs") %>
+    </div>
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<!-- Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.scrollbar@0.2.11/jquery.scrollbar.min.js" integrity="sha256-lcr7XHKry+oEoDi/xxl+/w+LXXAwQla+erxqxgCm7m0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-scroll-lock@3.1.3/jquery-scrollLock.min.js" integrity="sha256-OGBqkSG4kYQ0UbrT7juDZpE/VqIjMPuu6CVKQ1KaTEA=" crossorigin="anonymous"></script>
+<script src="/assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="/assets/js/argon.js?v=1.2.0"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_!?¿.*';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    document.getElementById("example-password-input").setAttribute("value", makeid(10));
+
+    function sendData(){
+        let username = document.getElementById("username").value;
+        if(!username || username === ""){
+            return;
+        }
+        let password = document.getElementById("example-password-input").value
+        let sessions = parseInt(document.getElementById("example-number-input").value);
+        let enabled = document.getElementById("customCheck1").checked;
+        let developer = document.getElementById("customCheck2").checked;
+        $.post("<%=url%>/users/add",
+            {
+                username: username,
+                password: password,
+                max_sessions: sessions,
+                enabled: enabled,
+                developer: developer
+            },
+            function(data, status){
+                Swal.fire({
+                    text: data.message,
+                    icon: data.error ? 'error' : "success",
+                    confirmButtonText: 'Ok'
+                })
+            });
+    }
+</script>
+</html>

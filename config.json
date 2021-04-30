@@ -1,0 +1,4 @@
+{
+  "port": 21234,
+  "admin": "http://localhost:21234/admin"
+}
