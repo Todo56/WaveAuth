@@ -1,6 +1,8 @@
 # WaveAuth
 This is the authentication tool used by the MCPE Wave client. This handles and validates all sessions.
 
+The admin template is using [Argon](https://www.creative-tim.com/product/argon-dashboard).
+
 ## Requirements:
 - MySQL or MariaDB 8
 - NodeJS
